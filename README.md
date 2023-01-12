@@ -4,8 +4,8 @@ A ionic/angular mobile that integrates my <a href ="https://github.com/ndukayame
 Figma designs from figma community
 - <a href="https://www.figma.com/file/Mick7lMqRgnmfQkNB9hzSc/Login-%26-SignUp-(Community)?t=S4L9kHlJ5nKq2Vsd-0"> Login and Signup screen </a>
 - <a href="https://www.figma.com/file/NqRcnzYM6jl84d9GNI5S30/User-Interface-profile-(Community)?node-id=10%3A128&t=S4L9kHlJ5nKq2Vsd-0"> Dashboard and Profile details screen </a>
-<br>
-To run app
+
+## To run app
 - ensure you have ionic and angular installed globally.
 - clone repo and run `ionic build` via terminal.
 - run `ionic capacitor add ios` if you're running on iOS or `ionic capacitor add android` if you're running on an android device.
