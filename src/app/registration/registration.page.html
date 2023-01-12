@@ -1,0 +1,105 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="welcomeTextWrapper">
+      <div class="welcomeText">
+        <p>Create an account</p>
+      </div>
+      <div class="welcomeSubtext">
+        <p>Connect with your friends today!</p>
+      </div>
+    </div>
+    <form class="regInput">
+      <ion-item class="formFields ion-margin-bottom">
+        <ion-input
+          placeholder="Enter first name"
+          type="text"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item class="formFields ion-margin-bottom">
+        <ion-input
+          placeholder="Enter second name"
+          type="text"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item class="formFields ion-margin-bottom">
+        <ion-input placeholder="Enter email" type="text" required></ion-input>
+      </ion-item>
+      <ion-item class="formFields ion-margin-bottom">
+        <ion-input
+          placeholder="Enter phone number"
+          type="text"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item class="formFields ion-margin-bottom">
+        <ion-input
+          placeholder="Enter password"
+          type="password"
+          required
+          showHideInput
+        ></ion-input>
+        <ion-icon name="eye-off-outline"></ion-icon>
+      </ion-item>
+      <ion-item class="formFields ion-margin-bottom">
+        <ion-input
+          placeholder="Enter password again"
+          type="password"
+          required
+        ></ion-input>
+        <ion-icon name="eye-off-outline"></ion-icon>
+      </ion-item>
+      <ion-button class="signupButton" type="submit" expand="block"
+        >Sign Up</ion-button
+      >
+    </form>
+    <div class="alternativeSignup">
+      <ion-grid fixed>
+        <ion-row class="ion-margin-bottom">
+          <ion-col size="4"><span class="span"> </span></ion-col>
+          <ion-col size="auto"
+            ><ion-label class="orText">Or With</ion-label>
+          </ion-col>
+          <ion-col size="4"><span class="span"></span></ion-col>
+        </ion-row>
+        <ion-row class="ion-margin-bottom">
+          <ion-col size="12">
+            <ion-item class="fbSignUp" lines="none">
+              <ion-avatar slot="start">
+                <img class="signupImg" src="/assets/Facebook_Logo.svg" />
+              </ion-avatar>
+              <ion-label class="ion-text-center"
+                >Signup with Facebook</ion-label
+              >
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item class="googleSignUp" lines="none">
+              <ion-avatar slot="start">
+                <img class="signupImg" src="/assets/Google_Logo.svg" />
+              </ion-avatar>
+              <ion-label class="ion-text-center">Signup with Google</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="auto">
+            <ion-item class="" lines="none">
+              <ion-label class="alreadyHaveAnAccount"
+                >Already have an account?
+              </ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="auto">
+            <ion-item class="loginText" lines="none">
+              <ion-label class="">Login </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,189 @@
+.container {
+  position: relative;
+}
+
+.welcomeTextWrapper {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  height: 100px;
+}
+
+.welcomeText {
+  position: relative;
+  height: 33px;
+  width: 214px;
+  left: 85px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  --ion-text-color: #000;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+.welcomeText p {
+  margin: 0px;
+}
+
+.welcomeSubtext p {
+  margin: 0px;
+}
+
+.welcomeSubtext {
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
+  height: 19px;
+  width: 250px;
+  left: 75px;
+}
+
+.regInput {
+  position: absolute;
+  top: 160px;
+  left: 39px;
+}
+.formFields {
+  --border-style: solid;
+  --border-width: 1px;
+  --border-radius: 10px;
+  height: 48px;
+  width: 312px;
+}
+.formFields ion-icon {
+  color: rgb(191, 191, 191);
+}
+.ion-margin-bottom {
+  margin-bottom: 15px;
+}
+.signupButton {
+  --background: #0e64d2;
+  height: 48px;
+  width: 312px;
+  left: 39px;
+  top: 488px;
+  border-radius: 5px;
+}
+.alternativeSignup {
+  position: absolute;
+  padding: 0px;
+  height: auto;
+  width: 100%;
+  left: 33px;
+  top: 600px;
+  margin: 0px;
+  --ion-color-dark: blue;
+}
+.alternativeSignup .span {
+  border: 0.8px solid rgba(28, 28, 28, 0.5);
+  width: 100%;
+  display: inline-block;
+}
+.alternativeSignup .orText {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: rgba(0, 0, 0, 0.8);
+}
+.alternativeSignup .fbSignUp {
+  width: 312px;
+  --background: #1877f2;
+  padding: 0px;
+  --border-radius: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  position: relative;
+  --padding-top: 4px;
+  --padding-bottom: 5px;
+  --padding-start: 5px;
+  // border: 1px solid red;
+  /* identical to box height */
+
+  color: rgba(255, 255, 255, 0.9);
+}
+.alternativeSignup .fbSignUp ion-label {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+.alternativeSignup .googleSignUp {
+  width: 312px;
+  --ion-color-light: white;
+  --ion-color-dark: rgba(0, 0, 0, 0.4);
+  --background: rgba(255, 255, 255, 0.02);
+  padding: 0px;
+  --border-radius: 10px;
+  --border-style: solid;
+  --border-width: 1px;
+  --border-color: var(--ion-color-dark);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  position: relative;
+  --padding-top: 4px;
+  --padding-bottom: 5px;
+  --padding-start: 5px;
+  /* identical to box height */
+
+  color: rgba(255, 255, 255, 0.9);
+}
+.alternativeSignup .googleSignUp ion-label {
+  position: relative;
+  left: -5px;
+  --color: rgba(0, 0, 0, 0.6);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+.signupImg {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  margin: 0px;
+  padding: 0px;
+  // border: 1px solid black;
+}
+
+.alreadyHaveAnAccount {
+  width: auto;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  text-decoration-line: underline;
+
+  color: rgba(0, 0, 0, 0.8);
+}
+.loginText {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  position: relative;
+  left: -25px;
+  text-decoration-line: underline;
+  color: #2f89fc;
+}

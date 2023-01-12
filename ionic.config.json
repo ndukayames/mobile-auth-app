@@ -1,0 +1,7 @@
+{
+  "name": "owa!",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

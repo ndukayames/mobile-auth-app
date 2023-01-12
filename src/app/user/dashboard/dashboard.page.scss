@@ -1,0 +1,118 @@
+ion-content {
+  --background: #ffffff;
+}
+ion-menu-button {
+  --color: #000000;
+  // --padding: 20px;
+  position: relative;
+  top: 80px;
+  left: 10px;
+}
+.profilePictureContainer {
+  position: relative;
+  width: 120px;
+  height: 113px;
+  left: 103px;
+  top: 8%;
+}
+.profilePicture {
+  width: 100%;
+  height: 100%;
+}
+.profileDetail {
+  position: relative;
+  // left: 103px;
+  // bottom: 33%;
+  top: 60px;
+  z-index: 3;
+}
+
+.username {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+.designation {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+.ellipse {
+  position: absolute;
+  top: 10px;
+  // bottom: 100%;
+
+  z-index: 2;
+}
+.dashboardNav {
+  position: relative;
+  z-index: 1;
+  top: 130px;
+}
+
+ion-thumbnail {
+  --size: large;
+}
+.activeIcon {
+  width: 19px;
+  height: 19px;
+  margin-left: 11px;
+}
+.profileIcon {
+  width: 52px;
+  height: 44px;
+  margin: 0px;
+}
+.messagesIcon {
+  z-index: 0;
+  width: 61px;
+  height: 42px;
+  margin: 0px;
+}
+.portfolioIcon {
+  width: 55px;
+  height: 44px;
+  margin: 0px;
+}
+.locationIcon {
+  width: 61px;
+  height: 61px;
+  margin: 0px;
+}
+.settingsIcon {
+  width: 54px;
+  height: 54px;
+  margin: 0px;
+}
+.dashboardNavText1 {
+  position: relative;
+  left: 53px;
+}
+.dashboardNavText2 {
+  position: relative;
+  left: 50px;
+}
+.dashboardNavText3 {
+  position: relative;
+  left: 40px;
+  z-index: 299;
+  margin: 0px;
+}
+.dashboardNavText4 {
+  position: relative;
+  left: 44px;
+}
+.dashboardNavText5 {
+  position: relative;
+  left: 38px;
+}
+.dashboardNavText6 {
+  position: relative;
+  left: 45px;
+}
