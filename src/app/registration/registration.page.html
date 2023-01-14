@@ -8,49 +8,73 @@
         <p>Connect with your friends today!</p>
       </div>
     </div>
-    <form class="regInput">
+    <form
+      (ngSubmit)="registerUser()"
+      [formGroup]="registrationForm"
+      class="regInput"
+    >
       <ion-item class="formFields ion-margin-bottom">
         <ion-input
           placeholder="Enter first name"
           type="text"
-          required
+          formControlName="firstName"
+          required="true"
+          [ngStyle]="{'color': registrationForm.get('firstName')?.valid !== true && registrationForm.get('firstName')?.touched  ? 'red' : 'black'}"
         ></ion-input>
       </ion-item>
       <ion-item class="formFields ion-margin-bottom">
         <ion-input
-          placeholder="Enter second name"
+          placeholder="Enter last name"
+          type="text"
+          formControlName="lastName"
+          required
+          [ngStyle]="{'color': registrationForm.get('lastName')?.valid !== true && registrationForm.get('lastName')?.touched  ? 'red' : 'black'}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="formFields ion-margin-bottom">
+        <ion-input
+          formControlName="email"
+          placeholder="Enter email"
           type="text"
           required
+          [ngStyle]="{'color': registrationForm.get('email')?.valid !== true && registrationForm.get('email')?.touched  ? 'red' : 'black'}"
         ></ion-input>
       </ion-item>
       <ion-item class="formFields ion-margin-bottom">
-        <ion-input placeholder="Enter email" type="text" required></ion-input>
-      </ion-item>
-      <ion-item class="formFields ion-margin-bottom">
         <ion-input
+          formControlName="phoneNumber"
           placeholder="Enter phone number"
           type="text"
           required
+          [ngStyle]="{'color': registrationForm.get('phoneNumber')?.valid !== true && registrationForm.get('phoneNumber')?.touched  ? 'red' : 'black'}"
         ></ion-input>
       </ion-item>
       <ion-item class="formFields ion-margin-bottom">
         <ion-input
+          formControlName="password1"
           placeholder="Enter password"
           type="password"
           required
+          [ngStyle]="{'color': registrationForm.get('password1')?.valid !== true && registrationForm.get('password1')?.touched  ? 'red' : 'black'}"
           showHideInput
         ></ion-input>
         <ion-icon name="eye-off-outline"></ion-icon>
       </ion-item>
       <ion-item class="formFields ion-margin-bottom">
         <ion-input
+          formControlName="password2"
           placeholder="Enter password again"
           type="password"
+          [ngStyle]="{'color': registrationForm.get('password2')?.valid !== true && registrationForm.get('password2')?.touched  ? 'red' : 'black'}"
           required
         ></ion-input>
         <ion-icon name="eye-off-outline"></ion-icon>
       </ion-item>
-      <ion-button class="signupButton" type="submit" expand="block"
+      <ion-button
+        [disabled]="registrationForm.valid !== true"
+        class="signupButton"
+        type="submit"
+        expand="block"
         >Sign Up</ion-button
       >
     </form>
