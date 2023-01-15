@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../shared/rest.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ScreenUtilsService } from '../shared/screen-utils.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -8,23 +11,53 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
   public email!: string;
   public password!: string;
-  constructor(private api: RestService, private router: Router) {}
+  constructor(
+    private api: RestService,
+    private storage: Storage,
+    private router: Router,
+    private screenUtils: ScreenUtilsService
+  ) {}
 
   ngOnInit() {}
 
-  onSubmit() {
-    const data = {
-      email: this.email,
-      password: this.password,
-    };
-    // this.api.post('auth/signin', data).subscribe((response) => {
-    //   console.log(response);
-    // });
-    this.router
-      .navigateByUrl('user/dashboard')
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+  async loginUser() {
+    // start loader
+    await this.screenUtils.doLoading('Authenticating...');
+
+    // validate form input
+    if (this.loginForm.valid) {
+      const requestBody = this.loginForm.value;
+      const loginRequest = await this.api.post('auth/signin', requestBody);
+
+      if (loginRequest.success) {
+        // stop loader
+        await this.screenUtils.stopLoading();
+
+        // show toast
+        await this.screenUtils.presentToast(
+          'bottom',
+          'logged in successfully',
+          1500
+        );
+        this.storage.set('login_token', loginRequest.message);
+        this.router.navigateByUrl('user/dashboard');
+      } else {
+        // stop loader
+        await this.screenUtils.stopLoading();
+
+        // show toast
+        await this.screenUtils.presentToast(
+          'bottom',
+          loginRequest.message,
+          1500
+        );
+      }
+    }
   }
 }

@@ -35,7 +35,7 @@
         <ion-input
           formControlName="email"
           placeholder="Enter email"
-          type="text"
+          type="email"
           required
           [ngStyle]="{'color': registrationForm.get('email')?.valid !== true && registrationForm.get('email')?.touched  ? 'red' : 'black'}"
         ></ion-input>
@@ -44,7 +44,7 @@
         <ion-input
           formControlName="phoneNumber"
           placeholder="Enter phone number"
-          type="text"
+          type="tel"
           required
           [ngStyle]="{'color': registrationForm.get('phoneNumber')?.valid !== true && registrationForm.get('phoneNumber')?.touched  ? 'red' : 'black'}"
         ></ion-input>
@@ -119,7 +119,7 @@
           </ion-col>
           <ion-col size="auto">
             <ion-item class="loginText" lines="none">
-              <ion-label class="">Login </ion-label>
+              <a [routerLink]="['/login']"> Login </a>
             </ion-item>
           </ion-col>
         </ion-row>

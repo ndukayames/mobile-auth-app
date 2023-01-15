@@ -35,11 +35,11 @@ export class RegistrationPage implements OnInit {
         'auth/signup',
         requestBody
       );
-      if (registerUserRequest.error) {
+      if (registerUserRequest.success) {
         await this.screenUtils.stopLoading();
         await this.screenUtils.presentToast(
           'bottom',
-          registerUserRequest.error.message,
+          registerUserRequest.message,
           1500
         );
       } else {

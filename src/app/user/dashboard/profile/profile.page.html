@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar color="light">
-    <ion-buttons slot="start">
+    <ion-buttons class="backButton" slot="start">
       <ion-back-button
         color="dark"
         text=""
         icon="arrow-back-outline"
       ></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="editProfile()">
+        <ion-icon slot="icon-only" name="pencil"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,10 +20,11 @@
       <ion-avatar class="profilePicture">
         <img alt="Silhouette of a person's head" src="/assets/Jimbo.png" />
       </ion-avatar>
-      <ion-icon class="editIcon" name="pencil"></ion-icon>
     </div>
     <div class="profileDetail">
-      <p class="username ion-text-center ion-margin-end">Nduka James</p>
+      <p class="username ion-text-center ion-margin-end">
+        {{profileDetails.first_name}} {{profileDetails.last_name}}
+      </p>
       <p class="designation ion-text-center ion-text-wrap ion-margin-start">
         Software Engineering
       </p>
@@ -28,30 +34,88 @@
     </div>
     <div class="span"></div>
     <ion-list lines="none" class="profileNav">
-      <ion-item>
-        <ion-icon name="person"></ion-icon>
-        <ion-label class="profileNavListItem1">First name</ion-label>
-        <ion-label class="profileNavListItem2 ion-text-wrap">James</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="person"></ion-icon>
-        <ion-label class="profileNavListItem1">Second name</ion-label>
-        <ion-label class="profileNavListItem2 ion-text-wrap">Obi</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="mail"></ion-icon>
-        <ion-label class="profileNavListItem1">Email</ion-label>
-        <ion-label class="profileNavListItem2 ion-text-wrap"
-          >jamesobi14@gmail.com</ion-label
+      <form (ngSubmit)="editProfileRequest()" [formGroup]="editProfileForm">
+        <ion-item>
+          <ion-icon name="person"></ion-icon>
+          <ion-label class="profileNavListItem1">First name</ion-label>
+          <ion-label
+            *ngIf="editProfileStatus === false"
+            class="profileNavListItem2 ion-text-wrap"
+            >{{profileDetails.first_name}}</ion-label
+          >
+          <ion-input
+            *ngIf="editProfileStatus"
+            formControlName="firstName"
+            class="profileNavListItem2"
+            type="text"
+            placeholder="first name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="person"></ion-icon>
+          <ion-label class="profileNavListItem1">Second name</ion-label>
+
+          <ion-label
+            *ngIf="editProfileStatus === false"
+            class="profileNavListItem2 ion-text-wrap"
+            >{{profileDetails.last_name}}</ion-label
+          >
+          <ion-input
+            formControlName="lastName"
+            *ngIf="editProfileStatus"
+            class="profileNavListItem2"
+            type="text"
+            placeholder="last name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail"></ion-icon>
+          <ion-label class="profileNavListItem1">Email</ion-label>
+          <ion-label
+            *ngIf="editProfileStatus === false"
+            class="profileNavListItem2 ion-text-wrap"
+            >{{profileDetails.email}}</ion-label
+          >
+          <ion-input
+            formControlName="email"
+            *ngIf="editProfileStatus"
+            class="profileNavListItem2"
+            type="email"
+            placeholder="email"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="phone-portrait"></ion-icon>
+          <ion-label class="profileNavListItem1">Phone number</ion-label>
+          <ion-label
+            *ngIf="editProfileStatus === false"
+            class="profileNavListItem2 ion-text-wrap"
+            >{{profileDetails.phone_number}}</ion-label
+          >
+          <ion-input
+            formControlName="phoneNumber"
+            *ngIf="editProfileStatus"
+            class="profileNavListItem2"
+            type="tel"
+            placeholder="phone number"
+          ></ion-input>
+        </ion-item>
+        <ion-button
+          [disabled]="!editProfileStatus"
+          *ngIf="editProfileStatus"
+          class="editButton"
+          type="submit"
+          >Sign Up</ion-button
         >
-      </ion-item>
-      <ion-item>
-        <ion-icon name="phone-portrait"></ion-icon>
-        <ion-label class="profileNavListItem1">Phone number</ion-label>
-        <ion-label class="profileNavListItem2 ion-text-wrap"
-          >+2348118236125</ion-label
+        <ion-button
+          [disabled]="!editProfileStatus"
+          *ngIf="editProfileStatus"
+          class="deleteButton"
+          color="danger"
+          (click)="deleteAccount()"
+          >Delete Account</ion-button
         >
-      </ion-item>
+      </form>
     </ion-list>
 
     <div class="spanBottom"></div>

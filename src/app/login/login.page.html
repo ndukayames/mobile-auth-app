@@ -2,23 +2,25 @@
   <div class="welcomeText">
     <p>Hi, Welcome Back! 👋</p>
   </div>
-  <div class="loginForm">
+  <form (ngSubmit)="loginUser()" [formGroup]="loginForm" class="loginForm">
     <ion-label class="formLabel">Email</ion-label>
     <ion-item class="formFields ion-margin-bottom" lines="full">
       <ion-input
         type="email"
-        [(ngModel)]="email"
+        formControlName="email"
         placeholder="example@gmail.com"
         required
+        [ngStyle]="{'color': loginForm.get('email')?.valid !== true && loginForm.get('email')?.touched  ? 'red' : 'black'}"
       ></ion-input>
     </ion-item>
     <ion-label class="formLabel" position="stacked">Password</ion-label>
     <ion-item class="formFields ion-margin-bottom" lines="full">
       <ion-input
         type="password"
-        [(ngModel)]="password"
+        formControlName="password"
         placeholder="Enter your password"
         required
+        [ngStyle]="{'color': loginForm.get('password')?.valid !== true && loginForm.get('password')?.touched  ? 'red' : 'black'}"
       ></ion-input>
       <ion-icon name="eye-off-outline"></ion-icon>
     </ion-item>
@@ -37,16 +39,12 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button
-          class="signinBtn"
-          type="submit"
-          expand="block"
-          (click)="onSubmit()"
+        <ion-button class="signinBtn" type="submit" expand="block"
           >Sign In</ion-button
         >
       </ion-col>
     </ion-row>
-  </div>
+  </form>
   <div class="alternativeSignup">
     <ion-grid fixed>
       <ion-row class="ion-margin-bottom">

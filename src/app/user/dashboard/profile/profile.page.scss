@@ -1,7 +1,7 @@
 ion-toolbar {
   --ion-color-light: #fff;
 }
-ion-buttons {
+.backButton {
   // border: 2px solid;
   position: relative;
   left: 25px;
@@ -122,4 +122,10 @@ img {
   float: right;
   left: 25px;
   top: 18px;
+}
+.editButton {
+  float: right;
+}
+.deleteButton {
+  float: left;
 }
