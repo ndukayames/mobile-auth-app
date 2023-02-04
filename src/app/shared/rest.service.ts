@@ -3,15 +3,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { catchError, firstValueFrom, lastValueFrom } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
+import { HttpResponse } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RestService {
   private apiUrl: string;
+  private authUrl: string;
 
   constructor(private http: HttpClient, public storage: Storage) {
     this.apiUrl = environment.apiUrl;
+    this.authUrl = environment.authUrl;
   }
 
   async get(endpoint: string) {
@@ -20,6 +23,19 @@ export class RestService {
     ).catch((err) => {
       return err.error;
     });
+  }
+
+  async ssoGet(endpoint: string) {
+    return this.http
+      .get(`${this.authUrl}/${endpoint}`, {
+        observe: 'response',
+      })
+      .subscribe(
+        (resp) => {
+          console.log(2, resp.headers.getAll);
+        },
+        (err) => console.log(1, err)
+      );
   }
 
   async authGet(endpoint: string) {

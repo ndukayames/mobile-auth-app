@@ -56,7 +56,7 @@
       </ion-row>
       <ion-row class="ion-margin-bottom">
         <ion-col size="12">
-          <ion-item class="fbSignUp" lines="none">
+          <ion-item (click)="facebookLogin()" class="fbSignUp" lines="none">
             <ion-avatar slot="start">
               <img class="signupImg" src="/assets/Facebook_Logo.svg" />
             </ion-avatar>
@@ -66,7 +66,7 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-item class="googleSignUp" lines="none">
+          <ion-item (click)="googleLogin()" class="googleSignUp" lines="none">
             <ion-avatar slot="start">
               <img class="signupImg" src="/assets/Google_Logo.svg" />
             </ion-avatar>
@@ -84,7 +84,12 @@
         </ion-col>
         <ion-col size="auto">
           <ion-item class="loginText" lines="none">
-            <ion-label class="">Sign up </ion-label>
+            <ion-label
+              [routerLink]="['/registration']"
+              routerLinkActive="router-link-active"
+              class=""
+              >Sign up
+            </ion-label>
           </ion-item>
         </ion-col>
       </ion-row>

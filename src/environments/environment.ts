@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://192.168.0.132:8000/api/v1',
+  authUrl: 'http://localhost:8000',
 };
 
 /*

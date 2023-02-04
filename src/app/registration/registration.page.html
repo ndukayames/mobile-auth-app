@@ -101,7 +101,11 @@
         </ion-row>
         <ion-row>
           <ion-col size="12">
-            <ion-item class="googleSignUp" lines="none">
+            <ion-item
+              (click)="googleSignup()"
+              class="googleSignUp"
+              lines="none"
+            >
               <ion-avatar slot="start">
                 <img class="signupImg" src="/assets/Google_Logo.svg" />
               </ion-avatar>

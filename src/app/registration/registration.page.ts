@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RestService } from '../shared/rest.service';
 import { ScreenUtilsService } from '../shared/screen-utils.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +24,8 @@ export class RegistrationPage implements OnInit {
   });
   constructor(
     private api: RestService,
-    private screenUtils: ScreenUtilsService
+    private screenUtils: ScreenUtilsService,
+    private auth: AngularFireAuth
   ) {}
 
   ngOnInit() {}
@@ -56,6 +59,37 @@ export class RegistrationPage implements OnInit {
       await this.screenUtils.presentToast(
         'bottom',
         'Please confirm the details you entered are valid.',
+        1500
+      );
+    }
+  }
+
+  async googleSignup() {
+    let signupDetails = await this.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    );
+    console.log(signupDetails);
+    const requestBody = {
+      account_type: 'google',
+      email: signupDetails.user?.email,
+    };
+    await this.screenUtils.doLoading('creating account...');
+    const registerUserRequest = await this.api.post(
+      'auth/social-signup',
+      requestBody
+    );
+    if (registerUserRequest.success) {
+      await this.screenUtils.stopLoading();
+      await this.screenUtils.presentToast(
+        'bottom',
+        registerUserRequest.message,
+        1500
+      );
+    } else {
+      await this.screenUtils.stopLoading();
+      await this.screenUtils.presentToast(
+        'bottom',
+        registerUserRequest.message,
         1500
       );
     }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ScreenUtilsService } from '../shared/screen-utils.service';
 import { Storage } from '@ionic/storage-angular';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,7 @@ export class LoginPage implements OnInit {
   public email!: string;
   public password!: string;
   constructor(
+    private auth: AngularFireAuth,
     private api: RestService,
     private storage: Storage,
     private router: Router,
@@ -60,4 +63,36 @@ export class LoginPage implements OnInit {
       }
     }
   }
+
+  async googleLogin() {
+    let loginDetails = await this.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    );
+    await this.screenUtils.doLoading('Authenticating...');
+    const requestBody = {
+      idToken: await loginDetails.user?.getIdToken(false),
+    };
+    const loginRequest = await this.api.post('auth/verify-token', requestBody);
+    if (loginRequest.success) {
+      // stop loader
+      await this.screenUtils.stopLoading();
+
+      // show toast
+      await this.screenUtils.presentToast(
+        'bottom',
+        'logged in successfully',
+        1500
+      );
+      this.storage.set('login_token', loginRequest.message);
+      this.router.navigateByUrl('user/dashboard');
+    } else {
+      // stop loader
+      await this.screenUtils.stopLoading();
+
+      // show toast
+      await this.screenUtils.presentToast('bottom', loginRequest.message, 1500);
+    }
+  }
+
+  async facebookLogin() {}
 }
